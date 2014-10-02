@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>FMS_Catのページ</title>
+		<style type="text/css">
+		</style>
+		<script src="jquery.js"></script>
+	</head>
+	<body background="haikei.png" bgcolor="#000000" text="#FFFFFF">
+		<!--
+		<embed src="gs.mid" autostart="true" repeat="true" width="0" height="0">
+		最近の環境はmidiに対応していないらしいので、仕方なくmp3に出力して再生することにしました。
+		-->
+		<audio src="gs.mp3" autoplay loop></audio>
+		<div align="center">
+			<a href="http://yahoo.co.jp"><img src="taitoru.gif" width="100%"></a><br>
+			<font size="7" color="#FF0000">
+				<marquee behavior="alternate"><span id="yourname"></span></marquee><br>
+			</font>
+			<hr>
+			<font size="7" color="#FFFF00">
+				☆リンク集☆<br>
+				<a href="https://twitter.com/FMS_Cat">Twitter</a><br>
+				<a href="http://fms-cat.tumblr.com/">Tumblr</a><br>
+				<a href="https://github.com/FMS-Cat">GitHub</a><br>
+				<a href="https://www.shadertoy.com/user/FMS_Cat">Shadertoy</a>
+			</font>
+		</div>
+
+		<script>
+			var name=prompt('こんにちは！\nあなたの名前を入力してください！','名無し')
+			document.getElementById("yourname").innerHTML="☆☆☆ ようこそ！ "+name+" さん ☆☆☆";
+		</script>
+	</body>
+</html>
