@@ -164,7 +164,7 @@ function disp()
 		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
 		var camPos=[0,0,2];
-		var matM=M.rotate(M.vector(M.rotate([.4,0,.6],t*.0031),[.2,1,0,1]),t*.005);
+		var matM=M.rotate(M.vector(M.rotate([.4,0,.6],t*.031),[.2,1,0,1]),t*.05);
 		var matV=M.lookAt(camPos,[0,0,0],[0,1,0]);
 		var matP=M.perspective(70,c.width/c.height,.1,100);
 		var uni_matVP=M.multiply(matP,M.multiply(matV,matM));
