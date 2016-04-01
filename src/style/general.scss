@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  background: #eee;
+  color: #222;
+  font: 200 16px/1.5 "Helvetica Neue", "ヒラギノ角ゴシック", sans-serif;
+
+  height: 100%;
+}
+
+a {
+  color: #37b;
+  text-decoration: none;
+}
+
+.vsep {
+  position: absolute;
+  left: calc( 50% - 10em );
+  top: 1em;
+  width: 1px;
+  height: calc( 100% - 2em );
+
+  background: #999;
+}
+
+#container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  @import 'side';
+  @import 'content';
+}
