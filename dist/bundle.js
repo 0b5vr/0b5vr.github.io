@@ -35,12 +35,40 @@ module.exports = function () {
 module.exports = function () {
 
   [{
+    name: 'Shift',
+    url: 'https://fms-cat.github.io/shift/dist/',
+    image: 'projects-shift.png',
+    date: 201702,
+    importance: 1.0,
+    desc: 'WebGL Demo - 1st Place @ TokyoDemoFest 2017'
+  }, {
+    name: 'Automaton',
+    url: 'https://github.com/fms-cat/automaton',
+    image: 'projects-automaton.jpg',
+    date: 201702,
+    importance: 1.0,
+    desc: 'JavaScriptでのアニメーションを支援するタイムラインシステム'
+  }, {
+    name: 'Everyday One Motion',
+    url: 'https://motions.work',
+    image: 'projects-eom.jpg',
+    date: 999999,
+    importance: 1.0,
+    desc: '14人のアーティストが日替わりで毎日モーショングラフィックスを投稿するプロジェクト'
+  }, {
     name: 'Nightbird Audience Node',
     url: 'https://fukuchilab.org/projects-j/nightbirdaudiencenode-j',
     image: 'projects-nightbirdan.png',
     date: 201603,
     importance: 1.0,
     desc: '即興によるプログラミングを用いた映像パフォーマンスにおいて、観客がパフォーマンスを支援するためのシステム'
+  }, {
+    name: 'Type',
+    url: 'https://fms-cat.github.io/type/',
+    image: 'projects-type.png',
+    date: 201602,
+    importance: 1.0,
+    desc: '16kb WebGL Demo - 2nd Place @ TokyoDemoFest 2016'
   }, {
     name: 'Nightbird',
     url: 'https://github.com/FMS-Cat/nightbird',

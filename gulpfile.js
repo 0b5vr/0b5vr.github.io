@@ -1,118 +1,147 @@
-( function() {
+const fs = require( "fs" );
 
-  'use strict';
+const gulp = require( "gulp" );
+const rename = require( "gulp-rename" );
+const changed = require( "gulp-changed" );
 
-  let gulp = require( 'gulp' );
+const browserify = require( "browserify" );
+const watchify = require( "watchify" );
+const babelify = require( "babelify" );
+const sass = require( "gulp-sass" );
+const source = require( "vinyl-source-stream" );
 
-  let browserify = require( 'browserify' );
-  let watchify = require( 'watchify' );
-  let babelify = require( 'babelify' );
-  let sass = require( 'gulp-sass' );
-  let rename = require( 'gulp-rename' );
-  let source = require( 'vinyl-source-stream' );
+const browserSync = require( "browser-sync" );
 
-  let browserSync = require( 'browser-sync' );
+// ------
 
-  // ---
+gulp.task( "static-build", () => {
+  gulp.src( [ "./src/static/**/*" ] )
+  .pipe( changed( "./dist" ) )
+  .pipe( gulp.dest( "./dist" ) );
+} );
 
-  gulp.task( 'style-build', function() {
-    return gulp.src( './src/style/main.scss' )
-    .pipe( sass().on( 'error', sass.logError ) )
-    .pipe( gulp.dest( './dist' ) )
-    .pipe( browserSync.stream() )
-  } );
+gulp.task( "static-watch", () => {
+  gulp.watch( "./src/static/**", [ "static-build" ] );
+} );
 
-  gulp.task( 'style-watch', function() {
-    gulp.watch( './src/style/**', [ 'style-build' ] );
-  } );
+// ------
 
-  // ---
+gulp.task( "style-build", () => {
+  return gulp.src( "./src/style/main.scss" )
+  .pipe( sass().on( "error", sass.logError ) )
+  .pipe( rename( "bundle.css" ) )
+  .pipe( gulp.dest( "./dist" ) )
+  .pipe( browserSync.stream() )
+} );
 
-  let brwsrfy = watchify( browserify( {
-    'cache': {},
-    'packageCache': {},
-    'fullPaths': true,
-    'entries': [ './src/script/main.js' ],
-    'transform': [
-      [ babelify, {
-        'presets': 'es2015'
-      } ]
-    ]
-  } ) );
+gulp.task( "style-watch", () => {
+  gulp.watch( "./src/style/**", [ "style-build" ] );
+} );
 
-  let bundle = function() {
-    console.log( '🔮 Browserify!' );
-    brwsrfy.bundle()
-    .on( 'error', function( _error ) {
+// ------
+
+let brwsrfy = browserify( {
+  cache: {},
+  packageCache: {},
+  fullPaths: true,
+  entries: [ "./src/script/main.js" ],
+  transform: [
+    [ babelify, {
+      presets: "es2015"
+    } ]
+  ]
+} );
+
+gulp.task( "script-build", () => {
+  brwsrfy.bundle()
+  .on( "error", function( _error ) {
+    console.error( _error );
+    this.emit( "end" );
+  } )
+  .pipe( source( "bundle.js" ) )
+  .pipe( gulp.dest( "./dist" ) );
+} );
+
+gulp.task( "script-watch", () => {
+  let wtcfy = watchify( brwsrfy );
+
+  wtcfy.on( "update", function() {
+    console.log( "🔮 Browserify!" );
+    wtcfy.bundle()
+    .on( "error", function( _error ) {
       console.error( _error );
-      this.emit( 'end' );
+      this.emit( "end" );
     } )
-    .pipe( source( 'main.js' ) )
-    .pipe( gulp.dest( './dist' ) );
-  };
-
-  brwsrfy.on( 'log', function( _log ) {
-    console.log( '🍕 ' + _log );
+    .pipe( source( "bundle.js" ) )
+    .pipe( gulp.dest( "./dist" ) );
   } );
 
-  gulp.task( 'script-build', function() {
-    bundle();
+  wtcfy.on( "log", ( _log ) => {
+    console.log( "🍕 " + _log );
   } );
+} );
 
-  gulp.task( 'script-watch', function() {
-    brwsrfy.on( 'update', function() {
-      bundle();
+// ------
+
+gulp.task( "browser-init", () => {
+  browserSync.init( {
+    server: "./dist"
+  } );
+} );
+
+gulp.task( "browser-reload", () => {
+  browserSync.reload();
+} );
+
+gulp.task( "browser-watch", () => {
+  gulp.watch( [ "./dist/**", "!./dist/**/*.css" ], [ "browser-reload" ] );
+} );
+
+// ------
+
+let recursiveUnlink = ( _path ) => {
+  if ( fs.existsSync( _path ) ) {
+    fs.readdirSync( _path ).map( ( _file ) => {
+      let filePath = _path + "/" + _file;
+      if ( fs.lstatSync( filePath ).isDirectory() ) {
+        recursiveUnlink( filePath );
+      } else {
+        fs.unlinkSync( filePath );
+      }
     } );
-  } );
+    fs.rmdirSync( _path );
+  }
+}
 
-  // ---
+gulp.task( "clean", () => {
+  recursiveUnlink( "./dist" );
+} );
 
-  gulp.task( 'html-copy', function() {
-    gulp.src( './src/*.html' )
-    .pipe( gulp.dest( 'dist' ) );
-  } );
+// ------
 
-  gulp.task( 'html-watch', function() {
-    gulp.watch( [ './src/*.html' ], [ 'html-copy' ] );
-  } );
+gulp.task( "watch", [
+  "static-watch",
+  "style-watch",
+  "script-watch"
+] );
 
-  // ---
+gulp.task( "build", [
+  "static-build",
+  "style-build",
+  "script-build"
+] );
 
-  gulp.task( 'browser-init', function() {
-    browserSync.init( {
-      server: './dist'
-    } );
-  } );
+gulp.task( "browser", [
+  "browser-init",
+  "browser-watch"
+] );
 
-  gulp.task( 'browser-reload', function() {
-    browserSync.reload();
-  } );
+gulp.task( "dev", [
+  "build",
+  "watch",
+  "browser"
+] );
 
-  gulp.task( 'browser-watch', function() {
-    gulp.watch( [ './dist/**', '!./dist/**/*.css' ], [ 'browser-reload' ] );
-  } );
-
-  // ---
-
-  gulp.task( 'watch', [
-    'style-watch',
-    'script-watch',
-    'browser-watch'
-  ] );
-
-  gulp.task( 'build', [
-    'style-build',
-    'script-build'
-  ] );
-
-  gulp.task( 'dev', [
-    'build',
-    'browser-init',
-    'watch'
-  ] );
-
-  gulp.task( 'default', [
-    'dev'
-  ] );
-
-} )();
+gulp.task( "default", [
+  "dev"
+] );

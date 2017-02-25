@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
 
-  background: #eee;
-  color: #222;
+  background: $color-bg;
+  color: $color-fg;
   font: 200 16px/1.5 "Helvetica Neue", "ヒラギノ角ゴシック", sans-serif;
 
   height: 100%;
@@ -12,16 +12,33 @@ body {
 a {
   color: #37b;
   text-decoration: none;
+
+  &:hover {
+    color: #59d;
+  }
+
+  &:active {
+    color: #359;
+  }
 }
 
-.vsep {
-  position: absolute;
-  left: calc( 50% - 10em );
-  top: 1em;
-  width: 1px;
-  height: calc( 100% - 2em );
+.vsepbg {
+  position: fixed;
+  left: $side-left + $side-width;
+  width: $vsep-width;
+  height: 100%;
 
-  background: #999;
+  background: $color-bg;
+
+  .vsep {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    width: 1px;
+    height: calc( 100% - 2em );
+
+    background: #999;
+  }
 }
 
 #container {

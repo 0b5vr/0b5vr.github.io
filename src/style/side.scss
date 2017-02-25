@@ -1,10 +1,11 @@
 .side {
   position: fixed;
-  overflow: scroll;
-  left: calc( 50% - 24em );
-  width: 12em;
+  left: $side-left;
+  width: $side-width;
   height: calc( 100% - 4em );
   padding: 2em 0;
+
+  background: $color-bg;
 
   .sep {
     position: relative;
