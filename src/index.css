@@ -7,17 +7,9 @@ body {
 }
 
 h1 {
-  @apply text-6xl font-bold mt-4 mb-2;
+  @apply text-6xl font-bold mt-2 mb-2;
 }
 
 h2 {
-  @apply text-3xl font-bold mt-4 mb-2;
-}
-
-p {
-  @apply my-2;
-}
-
-ul {
-  @apply my-2 list-disc;
+  @apply text-3xl font-bold mt-8 mb-2;
 }

@@ -1,5 +1,7 @@
 import { Link } from './Components/Link';
 import { SmallAside } from './Components/SmallAside';
+import { Paragraph } from './Components/Paragraph';
+import { Toolbox } from './Components/Toolbox';
 
 export const App: React.FC = () => {
   return (
@@ -7,23 +9,23 @@ export const App: React.FC = () => {
       <article className="my-4 p-2 max-w-sm md:max-w-2xl">
         <h1 className="w-full">0b5vr.com</h1>
 
-        <p>
+        <Paragraph>
           hihhahihhahihhahihhahihhahihha hihhahihhahihhahihh ahihhahi hhahihhahihhahihha hihhahihha hihhahih hahihhahihhahihha
           <SmallAside>English translation: under construction</SmallAside>
-        </p>
+        </Paragraph>
 
         <h2>Domain</h2>
 
-        <p>
+        <Paragraph>
           My first WebGL 64KB Intro !!!!!!<br />
           Appeared in Combined Demo Compo @ <Link href="https://tokyodemofest.jp">TokyoDemoFest 2021</Link>
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           <Link href="http://0b5vr.com/domain/">Watch the demo</Link>
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           <iframe src="https://www.youtube.com/embed/D2COWeeEqTs"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -31,7 +33,15 @@ export const App: React.FC = () => {
             className="w-full my-2 aspect-video"
           />
           <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
-        </p>
+        </Paragraph>
+
+        <h2>Toolbox</h2>
+
+        <Paragraph>
+          From actual tools to low effort shitposts
+        </Paragraph>
+
+        <Toolbox />
 
         <h2>Harbot</h2>
 
@@ -49,21 +59,20 @@ export const App: React.FC = () => {
 
         <h2>Link</h2>
 
-        <ul>
+        <ul className="list-disc">
           <li><Link href="https://twitter.com/0b5vr">Twitter</Link> (en)</li>
           <li><Link href="https://twitter.com/0m5vr">Twitter 2</Link> (ja)</li>
           <li><Link href="https://www.pouet.net/user.php?who=104878">pouët</Link></li>
           <li><Link href="https://shadertoy.com/user/0b5vr">Shadertoy</Link></li>
           <li><Link href="https://github.com/0b5vr">GitHub</Link></li>
           <li><Link href="https://scrapbox.io/0b5vr/">Scrapbox</Link></li>
-          <li><Link href="http://airhorn-wav.glitch.me/">airhorn.wav</Link></li>
         </ul>
 
         <h2>Contact</h2>
 
-        <p>
+        <Paragraph>
           no
-        </p>
+        </Paragraph>
       </article>
     </div>
   );
