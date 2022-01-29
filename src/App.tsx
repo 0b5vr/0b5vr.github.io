@@ -54,6 +54,7 @@ export const App: React.FC = () => {
           <li><Link href="https://twitter.com/0m5vr">Twitter 2</Link> (ja)</li>
           <li><Link href="https://www.pouet.net/user.php?who=104878">pouët</Link></li>
           <li><Link href="https://shadertoy.com/user/0b5vr">Shadertoy</Link></li>
+          <li><Link href="https://github.com/0b5vr">GitHub</Link></li>
           <li><Link href="https://scrapbox.io/0b5vr/">Scrapbox</Link></li>
           <li><Link href="http://airhorn-wav.glitch.me/">airhorn.wav</Link></li>
         </ul>
