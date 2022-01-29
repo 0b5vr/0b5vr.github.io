@@ -4,11 +4,11 @@ import { SmallAside } from './Components/SmallAside';
 export const App: React.FC = () => {
   return (
     <div className="grid place-items-center">
-      <article className="my-4 p-2 max-w-xl">
-        <h1>0b5vr.com</h1>
+      <article className="my-4 p-2 max-w-sm md:max-w-2xl">
+        <h1 className="w-full">0b5vr.com</h1>
 
         <p>
-          hihhahihhahihhahihhahihhahihha hihhahihhahihhahihh ahihhahihhahihhahihhahihhahihhahihhahihhahihhahihhahihhahihha
+          hihhahihhahihhahihhahihhahihha hihhahihhahihhahihh ahihhahi hhahihhahihhahihha hihhahihha hihhahih hahihhahihhahihha
           <SmallAside>English translation: under construction</SmallAside>
         </p>
 
