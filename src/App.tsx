@@ -35,12 +35,14 @@ export const App: React.FC = () => {
 
         <h2>Harbot</h2>
 
-        <iframe src="https://weep.jp/embed/harbot/"
+        <iframe
+          className="bg-transparent my-2"
           width="135"
           height="210"
           scrolling="no"
-          className="my-2"
-        />
+          src="https://weep.page/harbot/"
+        ></iframe>
+
         <SmallAside>
           <Link href="https://weep.jp/harbot">https://weep.jp/harbot</Link>
         </SmallAside>
