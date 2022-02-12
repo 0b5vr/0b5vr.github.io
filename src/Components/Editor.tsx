@@ -113,17 +113,19 @@ export const Editor: React.FC = () => {
     editor.addCommand( KeyMod.CtrlCmd | KeyCode.KeyR, apply );
   }, [ refEditor ] );
 
-  return <>
-    <MonacoEditor
-      height="320px"
-      defaultLanguage="javascript"
-      defaultValue={ defaultValue }
-      theme="vs-dark"
-      onMount={ handleEditorMount }
-    />
-    <div
-      ref={ refDivContainer }
-      className="w-full h-16 bg-gray-800 text-gray-300 p-1 whitespace-pre font-mono"
-    />
-  </>;
+  return (
+    <div className="my-2">
+      <MonacoEditor
+        height="320px"
+        defaultLanguage="javascript"
+        defaultValue={ defaultValue }
+        theme="vs-dark"
+        onMount={ handleEditorMount }
+      />
+      <div
+        ref={ refDivContainer }
+        className="w-full h-16 bg-gray-800 text-gray-300 p-1 whitespace-pre font-mono"
+      />
+    </div>
+  );
 };
