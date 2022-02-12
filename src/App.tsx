@@ -1,3 +1,4 @@
+import { Editor } from './Components/Editor';
 import { Link } from './Components/Link';
 import { SmallAside } from './Components/SmallAside';
 import { Paragraph } from './Components/Paragraph';
@@ -42,6 +43,10 @@ export const App: React.FC = () => {
         </Paragraph>
 
         <Toolbox />
+
+        <h2>Editor</h2>
+
+        <Editor />
 
         <h2>Harbot</h2>
 
