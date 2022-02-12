@@ -3,6 +3,7 @@ import automatonWebp from '../assets/toolbox/automaton.webp';
 import threeVrmInspectorWebp from '../assets/toolbox/three-vrm-inspector.webp';
 import threePhongShaderInspectorWebp from '../assets/toolbox/three-phong-shader-inspector.webp';
 import tweakpanePluginProfilerWebp from '../assets/toolbox/tweakpane-plugin-profiler.webp';
+import tweakpanePluginRotationWebp from '../assets/toolbox/tweakpane-plugin-rotation.webp';
 import obsvrThreeJsPMREMGeneratorWebp from '../assets/toolbox/0b5vr-three-js-pmremgenerator.webp';
 import flipInvertWebp from '../assets/toolbox/flip-invert.webp';
 import { Tool } from './Tool';
@@ -18,6 +19,11 @@ export const Toolbox: React.FC = () => (
       name="three-phong-shader-inspector"
       imageSrc={ threePhongShaderInspectorWebp }
       url="https://three-phong-shader-inspector.glitch.me"
+    />
+    <Tool
+      name="tweakpane-plugin-rotation"
+      imageSrc={ tweakpanePluginRotationWebp }
+      url="https://github.com/0b5vr/tweakpane-plugin-rotation"
     />
     <Tool
       name="tweakpane-plugin-profiler"
