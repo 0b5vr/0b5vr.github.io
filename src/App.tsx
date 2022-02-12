@@ -12,8 +12,8 @@ export const App: React.FC = () => {
 
         <Paragraph>
           hihhahihhahihhahihhahihhahihha hihhahihhahihhahihh ahihhahi hhahihhahihhahihha hihhahihha hihhahih hahihhahihhahihha
-          <SmallAside>English translation: under construction</SmallAside>
         </Paragraph>
+        <SmallAside>English translation: under construction</SmallAside>
 
         <h2>Domain</h2>
 
@@ -33,8 +33,8 @@ export const App: React.FC = () => {
             allowFullScreen
             className="w-full my-2 aspect-video"
           />
-          <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
         </Paragraph>
+        <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
 
         <h2>Toolbox</h2>
 
