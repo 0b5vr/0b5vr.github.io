@@ -47,6 +47,7 @@ export const App: React.FC = () => {
         <h2>Editor</h2>
 
         <Editor />
+        <SmallAside>Use at your own risk.</SmallAside>
 
         <h2>Harbot</h2>
 
