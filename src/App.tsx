@@ -1,5 +1,6 @@
 import { Editor } from './Components/Editor';
 import { Link } from './Components/Link';
+import { NpmBadge } from './Components/NpmBadge';
 import { SmallAside } from './Components/SmallAside';
 import { Paragraph } from './Components/Paragraph';
 import { Toolbox } from './Components/Toolbox';
@@ -9,6 +10,10 @@ export const App: React.FC = () => {
     <div className="grid place-items-center">
       <article className="my-4 p-2 max-w-sm md:max-w-2xl">
         <h1 className="w-full">0b5vr.com</h1>
+
+        <Paragraph>
+          <NpmBadge />
+        </Paragraph>
 
         <Paragraph>
           hihhahihhahihhahihhahihhahihha hihhahihhahihhahihh ahihhahi hhahihhahihhahihha hihhahihha hihhahih hahihhahihhahihha
