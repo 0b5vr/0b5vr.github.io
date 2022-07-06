@@ -1,11 +1,14 @@
 import airhornWebp from '../assets/toolbox/airhorn.webp';
 import automatonWebp from '../assets/toolbox/automaton.webp';
+import gzipAnalyzerWebp from '../assets/toolbox/gzip-analyzer.webp';
 import threeVrmInspectorWebp from '../assets/toolbox/three-vrm-inspector.webp';
 import threePhongShaderInspectorWebp from '../assets/toolbox/three-phong-shader-inspector.webp';
 import tweakpanePluginProfilerWebp from '../assets/toolbox/tweakpane-plugin-profiler.webp';
 import tweakpanePluginRotationWebp from '../assets/toolbox/tweakpane-plugin-rotation.webp';
 import obsvrThreeJsPMREMGeneratorWebp from '../assets/toolbox/0b5vr-three-js-pmremgenerator.webp';
+import wavenerdWebp from '../assets/toolbox/wavenerd.webp';
 import flipInvertWebp from '../assets/toolbox/flip-invert.webp';
+import zopfliSandboxWebp from '../assets/toolbox/zopfli-sandbox.webp';
 import { Tool } from './Tool';
 
 export const Toolbox: React.FC = () => (
@@ -21,6 +24,11 @@ export const Toolbox: React.FC = () => (
       url="https://three-phong-shader-inspector.glitch.me"
     />
     <Tool
+      name="wavenerd"
+      imageSrc={ wavenerdWebp }
+      url="https://0b5vr.github.io/wavenerd/"
+    />
+    <Tool
       name="tweakpane-plugin-rotation"
       imageSrc={ tweakpanePluginRotationWebp }
       url="https://github.com/0b5vr/tweakpane-plugin-rotation"
@@ -29,6 +37,16 @@ export const Toolbox: React.FC = () => (
       name="tweakpane-plugin-profiler"
       imageSrc={ tweakpanePluginProfilerWebp }
       url="https://github.com/0b5vr/tweakpane-plugin-profiler"
+    />
+    <Tool
+      name="gzip-analyzer"
+      imageSrc={ gzipAnalyzerWebp }
+      url="https://0b5vr.github.io/gzip-analyzer/"
+    />
+    <Tool
+      name="zopfli-sandbox"
+      imageSrc={ zopfliSandboxWebp }
+      url="https://0b5vr-zopfli-sandbox.glitch.me/"
     />
     <Tool
       name="0b5vr-three-js-pmremgenerator"
