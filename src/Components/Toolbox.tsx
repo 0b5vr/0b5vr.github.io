@@ -3,9 +3,11 @@ import automatonWebp from '../assets/toolbox/automaton.webp';
 import gzipAnalyzerWebp from '../assets/toolbox/gzip-analyzer.webp';
 import threeVrmInspectorWebp from '../assets/toolbox/three-vrm-inspector.webp';
 import threePhongShaderInspectorWebp from '../assets/toolbox/three-phong-shader-inspector.webp';
+import threePlaygroundWebp from '../assets/toolbox/three-playground.webp';
 import tweakpanePluginProfilerWebp from '../assets/toolbox/tweakpane-plugin-profiler.webp';
 import tweakpanePluginRotationWebp from '../assets/toolbox/tweakpane-plugin-rotation.webp';
 import obsvrThreeJsPMREMGeneratorWebp from '../assets/toolbox/0b5vr-three-js-pmremgenerator.webp';
+import shaderPlaygroundWebp from '../assets/toolbox/shader-playground.webp';
 import wavenerdWebp from '../assets/toolbox/wavenerd.webp';
 import flipInvertWebp from '../assets/toolbox/flip-invert.webp';
 import zopfliSandboxWebp from '../assets/toolbox/zopfli-sandbox.webp';
@@ -16,7 +18,17 @@ export const Toolbox: React.FC = () => (
     <Tool
       name="three-vrm-inspector"
       imageSrc={ threeVrmInspectorWebp }
-      url="https://0b5vr.github.io/three-vrm-inspector"
+      url="https://0b5vr.com/three-vrm-inspector"
+    />
+    <Tool
+      name="shader-playground"
+      imageSrc={ shaderPlaygroundWebp }
+      url="https://0b5vr.com/shader-playground/"
+    />
+    <Tool
+      name="three-playground"
+      imageSrc={ threePlaygroundWebp }
+      url="https://0b5vr.com/three-playground/"
     />
     <Tool
       name="three-phong-shader-inspector"
@@ -26,7 +38,7 @@ export const Toolbox: React.FC = () => (
     <Tool
       name="wavenerd"
       imageSrc={ wavenerdWebp }
-      url="https://0b5vr.github.io/wavenerd/"
+      url="https://0b5vr.com/wavenerd/"
     />
     <Tool
       name="tweakpane-plugin-rotation"
@@ -41,7 +53,7 @@ export const Toolbox: React.FC = () => (
     <Tool
       name="gzip-analyzer"
       imageSrc={ gzipAnalyzerWebp }
-      url="https://0b5vr.github.io/gzip-analyzer/"
+      url="https://0b5vr.com/gzip-analyzer/"
     />
     <Tool
       name="zopfli-sandbox"
@@ -66,7 +78,7 @@ export const Toolbox: React.FC = () => (
     <Tool
       name="flip-invert"
       imageSrc={ flipInvertWebp }
-      url="https://0b5vr.github.io/flip-invert"
+      url="https://0b5vr.com/flip-invert"
     />
   </ul>
 );
