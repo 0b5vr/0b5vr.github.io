@@ -8,30 +8,34 @@ import { Toolbox } from './Components/Toolbox';
 export const App: React.FC = () => {
   return (
     <div className="grid place-items-center">
-      <article className="my-4 p-2 max-w-sm md:max-w-2xl">
+      <article className="my-4 p-2 w-full max-w-sm md:max-w-2xl">
         <h1 className="w-full">0b5vr.com</h1>
 
         <Paragraph>
           <NpmBadge />
         </Paragraph>
 
-        <Paragraph>
-          hihhahihhahihhahihhahihhahihha hihhahihhahihhahihh ahihhahi hhahihhahihhahihha hihhahihha hihhahih hahihhahihhahihha
-        </Paragraph>
-        <SmallAside>English translation: under construction</SmallAside>
-
-        <h2>Domain</h2>
+        <h2>Stuff</h2>
 
         <Paragraph>
-          My first WebGL 64KB Intro !!!!!!<br />
-          Appeared in Combined Demo Compo @ <Link href="https://tokyodemofest.jp">TokyoDemoFest 2021</Link>
+          I love making cryptic html files!!!!!
         </Paragraph>
 
-        <Paragraph>
-          <Link href="http://0b5vr.com/domain/">Watch the demo</Link>
-        </Paragraph>
+        <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
 
         <Paragraph>
+          <iframe src="https://www.youtube.com/embed/3lOptjAeA2w"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full my-2 aspect-video"
+          />
+          <iframe src="https://www.youtube.com/embed/Ay2ht_dgVw8"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full my-2 aspect-video"
+          />
           <iframe src="https://www.youtube.com/embed/D2COWeeEqTs"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -39,7 +43,6 @@ export const App: React.FC = () => {
             className="w-full my-2 aspect-video"
           />
         </Paragraph>
-        <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
 
         <h2>Toolbox</h2>
 
