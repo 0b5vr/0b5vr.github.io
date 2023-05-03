@@ -74,8 +74,9 @@ export const App: React.FC = () => {
         <h2>Link</h2>
 
         <ul className="list-disc">
-          <li><Link href="https://twitter.com/0b5vr">Twitter</Link> (en)</li>
-          <li><Link href="https://twitter.com/0m5vr">Twitter 2</Link> (ja)</li>
+          <li><Link href="https://twitter.com/0b5vr">Twitter</Link> (en, promotional)</li>
+          <li><Link href="https://twitter.com/0m5vr">Twitter 2</Link> (ja, daily)</li>
+          <li><Link href="https://mastodon.social/@0b5vr">Mastodon</Link></li>
           <li><Link href="https://cohost.org/0b5vr">cohost</Link></li>
           <li><Link href="https://www.pouet.net/user.php?who=104878">pouët</Link></li>
           <li><Link href="https://shadertoy.com/user/0b5vr">Shadertoy</Link></li>
