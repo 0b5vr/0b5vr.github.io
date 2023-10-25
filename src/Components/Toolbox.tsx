@@ -3,7 +3,6 @@ import automatonWebp from '../assets/toolbox/automaton.webp';
 import gzipAnalyzerWebp from '../assets/toolbox/gzip-analyzer.webp';
 import threeVrmInspectorWebp from '../assets/toolbox/three-vrm-inspector.webp';
 import threePhongShaderInspectorWebp from '../assets/toolbox/three-phong-shader-inspector.webp';
-import threePlaygroundWebp from '../assets/toolbox/three-playground.webp';
 import tweakpanePluginProfilerWebp from '../assets/toolbox/tweakpane-plugin-profiler.webp';
 import tweakpanePluginRotationWebp from '../assets/toolbox/tweakpane-plugin-rotation.webp';
 import obsvrThreeJsPMREMGeneratorWebp from '../assets/toolbox/0b5vr-three-js-pmremgenerator.webp';
@@ -24,11 +23,6 @@ export const Toolbox: React.FC = () => (
       name="shader-playground"
       imageSrc={ shaderPlaygroundWebp }
       url="https://0b5vr.com/shader-playground/"
-    />
-    <Tool
-      name="three-playground"
-      imageSrc={ threePlaygroundWebp }
-      url="https://0b5vr.com/three-playground/"
     />
     <Tool
       name="three-phong-shader-inspector"
