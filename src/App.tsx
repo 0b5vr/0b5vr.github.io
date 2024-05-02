@@ -64,11 +64,11 @@ export const App: React.FC = () => {
           width="135"
           height="210"
           scrolling="no"
-          src="https://weep.page/harbot/"
+          src="https://weepjp.neocities.org/harbot/"
         ></iframe>
 
         <SmallAside>
-          <Link href="https://weep.jp/harbot">https://weep.jp/harbot</Link>
+          <Link href="https://weepjp.neocities.org/harbot/">https://weepjp.neocities.org/harbot/</Link>
         </SmallAside>
 
         <h2>Link</h2>
