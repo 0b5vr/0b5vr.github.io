@@ -3,7 +3,7 @@ import { Link } from './Components/Link';
 import { NpmBadge } from './Components/NpmBadge';
 import { SmallAside } from './Components/SmallAside';
 import { Paragraph } from './Components/Paragraph';
-import { Toolbox } from './Components/Toolbox';
+import { YouTube } from './Components/YouTube';
 
 export const App: React.FC = () => {
   return (
@@ -24,24 +24,10 @@ export const App: React.FC = () => {
         <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
 
         <Paragraph>
-          <iframe src="https://www.youtube.com/embed/3lOptjAeA2w"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full my-2 aspect-video"
-          />
-          <iframe src="https://www.youtube.com/embed/Ay2ht_dgVw8"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full my-2 aspect-video"
-          />
-          <iframe src="https://www.youtube.com/embed/D2COWeeEqTs"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full my-2 aspect-video"
-          />
+          <YouTube url="https://www.youtube.com/embed/OewtzMN0qO0" />
+          <YouTube url="https://www.youtube.com/embed/3lOptjAeA2w" />
+          <YouTube url="https://www.youtube.com/embed/Ay2ht_dgVw8" />
+          <YouTube url="https://www.youtube.com/embed/D2COWeeEqTs" />
         </Paragraph>
 
         <h2>Editor</h2>
