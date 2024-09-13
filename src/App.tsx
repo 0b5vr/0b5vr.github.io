@@ -44,14 +44,6 @@ export const App: React.FC = () => {
           />
         </Paragraph>
 
-        <h2>Toolbox</h2>
-
-        <Paragraph>
-          From actual tools to low effort shitposts
-        </Paragraph>
-
-        <Toolbox />
-
         <h2>Editor</h2>
 
         <Editor />
