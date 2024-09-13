@@ -87,6 +87,7 @@ export const Editor: React.FC = () => {
       minimap: {
         renderCharacters: false,
       },
+      fontFamily: '"JetBrains Mono", monospace',
     } );
 
     let lastUnmount: unknown;
@@ -124,7 +125,7 @@ export const Editor: React.FC = () => {
       />
       <div
         ref={ refDivContainer }
-        className="w-full h-16 bg-gray-800 text-gray-300 p-1 whitespace-pre font-mono"
+        className="w-full h-16 bg-gray-800 text-gray-300 px-2 py-1 whitespace-pre font-mono text-xs"
       />
     </div>
   );
