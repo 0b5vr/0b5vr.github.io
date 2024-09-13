@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   @apply m-0 bg-black text-white;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
 }
 
 h1 {
-  @apply text-6xl font-bold mt-2 mb-2;
+  @apply text-6xl font-extrabold mt-2 mb-2;
 }
 
 h2 {
-  @apply text-3xl font-bold mt-8 mb-2;
+  @apply text-3xl font-extrabold mt-8 mb-2;
 }
