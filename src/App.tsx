@@ -4,10 +4,13 @@ import { NpmBadge } from './Components/NpmBadge';
 import { SmallAside } from './Components/SmallAside';
 import { Paragraph } from './Components/Paragraph';
 import { YouTube } from './Components/YouTube';
+import { Background } from './Components/Background';
 
 export const App: React.FC = () => {
-  return (
-    <div className="grid place-items-center">
+  return <>
+    <Background />
+
+    <div className="relative grid place-items-center">
       <article className="my-4 p-2 w-full max-w-sm md:max-w-2xl">
         <h1 className="w-full">0b5vr.com</h1>
 
@@ -67,5 +70,5 @@ export const App: React.FC = () => {
         </Paragraph>
       </article>
     </div>
-  );
+  </>;
 }

@@ -12,6 +12,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@0b5vr/experimental": "^0.9.6",
     "@monaco-editor/react": "^4.3.1",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
