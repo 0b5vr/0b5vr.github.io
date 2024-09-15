@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useAnimationFrame } from './utils/useAnimationFrame';
 import { BackgroundRenderer } from './BackgroundRenderer';
 import { CDS } from '@0b5vr/experimental';
+import bgOverlayPng from './assets/bg-overlay.png?url';
 
 export function Background(): JSX.Element {
   const refRenderer = useRef<BackgroundRenderer>();
@@ -41,10 +42,16 @@ export function Background(): JSX.Element {
     refRenderer.current.render(delta);
   }, []);
 
-  return (
+  return <>
     <canvas
       className="fixed top-0 left-0 w-full h-full"
       ref={refCanvas}
     ></canvas>
-  );
+    <div
+      className="fixed top-0 left-0 w-full h-full bg-repeat"
+      style={{
+        backgroundImage: `url(${bgOverlayPng})`
+      }}
+    ></div>
+  </>;
 }

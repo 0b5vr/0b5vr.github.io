@@ -10,8 +10,8 @@ import { glLazyMultisampleTarget } from './gl/glLazyMultisampleTarget';
 import { GL_BLEND, GL_FRAMEBUFFER, GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA, GL_ZERO } from './gl/glConstants';
 import { glClear } from './gl/glClear';
 
-const LINE_SEGMENTS = 1024;
-const LINE_COUNT = 256;
+const LINE_SEGMENTS = 256;
+const LINE_COUNT = 128;
 
 export class BackgroundRenderer {
   public scrollPos: number;

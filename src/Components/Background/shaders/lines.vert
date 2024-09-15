@@ -111,6 +111,7 @@ void main() {
   float aspect = uResolution.x / uResolution.y;
 
   vec3 position = vec3(x, y, 0.0);
+  position.x += 0.02 * (hash3f(vec3(y)).x - 0.5);
   position *= 1.5;
   position.x *= aspect;
 
