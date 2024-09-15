@@ -27,10 +27,12 @@ export const App: React.FC = () => {
         <SmallAside>Inside YouTube, YouTube is the rule.</SmallAside>
 
         <Paragraph>
+          <div className="grid gap-2 grid-cols-1 md:grid-cols-2">
           <YouTube url="https://www.youtube.com/embed/OewtzMN0qO0" />
           <YouTube url="https://www.youtube.com/embed/3lOptjAeA2w" />
           <YouTube url="https://www.youtube.com/embed/Ay2ht_dgVw8" />
           <YouTube url="https://www.youtube.com/embed/D2COWeeEqTs" />
+          </div>
         </Paragraph>
 
         <h2>Editor</h2>
