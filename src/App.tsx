@@ -5,10 +5,17 @@ import { SmallAside } from './Components/SmallAside';
 import { Paragraph } from './Components/Paragraph';
 import { YouTube } from './Components/YouTube';
 import { Background } from './Components/Background';
+import { useCallback, useState } from 'react';
 
 export const App: React.FC = () => {
+  const [fancy, setFancy] = useState(true);
+
+  const toggleFancy = useCallback(() => {
+    setFancy((prev) => !prev);
+  }, []);
+
   return <>
-    <Background />
+    {fancy && <Background />}
 
     <div className="relative grid place-items-center">
       <article className="my-4 p-2 w-full max-w-sm md:max-w-2xl">
@@ -16,6 +23,12 @@ export const App: React.FC = () => {
 
         <Paragraph>
           <NpmBadge />
+        </Paragraph>
+
+        <Paragraph>
+          <span className="cursor-pointer text-sm hover:opacity-80 active:opacity-60" onClick={toggleFancy}>
+            {fancy ? '(Click here to stop being fancy)' : '(Click here to go fancy)'}
+          </span>
         </Paragraph>
 
         <h2>Stuff</h2>
@@ -28,10 +41,10 @@ export const App: React.FC = () => {
 
         <Paragraph>
           <div className="grid gap-2 grid-cols-1 md:grid-cols-2">
-          <YouTube url="https://www.youtube.com/embed/OewtzMN0qO0" />
-          <YouTube url="https://www.youtube.com/embed/3lOptjAeA2w" />
-          <YouTube url="https://www.youtube.com/embed/Ay2ht_dgVw8" />
-          <YouTube url="https://www.youtube.com/embed/D2COWeeEqTs" />
+            <YouTube url="https://www.youtube.com/embed/OewtzMN0qO0" />
+            <YouTube url="https://www.youtube.com/embed/3lOptjAeA2w" />
+            <YouTube url="https://www.youtube.com/embed/Ay2ht_dgVw8" />
+            <YouTube url="https://www.youtube.com/embed/D2COWeeEqTs" />
           </div>
         </Paragraph>
 
