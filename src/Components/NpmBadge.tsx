@@ -5,6 +5,7 @@ export const NpmBadge: React.FC = () => (
     <img
       alt="@0b5vr/experimental on npm"
       src="https://img.shields.io/npm/v/@0b5vr/experimental?logo=npm&style=flat-square"
+      className="h-[20px]"
     />
   </Link>
 );
