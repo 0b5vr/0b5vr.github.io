@@ -80,14 +80,13 @@ export const Editor: React.FC = () => {
     }
   }, [ monaco ] );
 
-  const handleEditorMount: OnMount = useCallback( ( editor ) => {
+  const handleEditorMount: OnMount = useCallback( async ( editor ) => {
     refEditor.current = editor;
 
     editor.updateOptions( {
       minimap: {
         renderCharacters: false,
       },
-      fontFamily: '"JetBrains Mono", monospace',
     } );
 
     let lastUnmount: unknown;
