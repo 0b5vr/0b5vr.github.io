@@ -31,6 +31,9 @@ export function Background(): JSX.Element {
   const refCDSScrollPos = useRef(new CDS());
 
   useAnimationFrame((delta) => {
+    // limit delta to avoid large jumps
+    delta = Math.min(delta, 0.1);
+
     const wheel = window.scrollY / window.innerHeight;
     refCDSScrollPos.current.factor = 50.0;
     refCDSScrollPos.current.target = wheel;
