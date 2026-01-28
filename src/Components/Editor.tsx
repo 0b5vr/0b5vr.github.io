@@ -59,7 +59,7 @@ export const Editor: React.FC = () => {
       type: 'importmap',
       innerHTML: `{
         "imports": {
-          "@0b5vr/experimental": "https://unpkg.com/@0b5vr/experimental/dist/0b5vr-experimental.esm.min.js"
+          "@0b5vr/experimental": "https://cdn.jsdelivr.net/npm/@0b5vr/experimental/+esm"
         }
       }`,
     } );
@@ -69,7 +69,7 @@ export const Editor: React.FC = () => {
 
   useEffect( () => {
     if ( monaco ) {
-      fetch( 'https://unpkg.com/@0b5vr/experimental/dist/0b5vr-experimental.d.ts' )
+      fetch( 'https://cdn.jsdelivr.net/npm/@0b5vr/experimental/dist/0b5vr-experimental.d.ts' )
         .then( ( res ) => res.text() )
         .then( async ( typedef ) => {
           monaco.languages.typescript.javascriptDefaults.addExtraLib(
