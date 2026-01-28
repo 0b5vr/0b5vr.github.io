@@ -1,7 +1,14 @@
-export const Link: React.FC<{
+import type { ReactNode } from 'react';
+
+export const Link = ({
+  children,
+  href,
+  noColorChange,
+}: {
   href: string;
   noColorChange?: boolean;
-}> = ({ children, href, noColorChange }) => (
+  children: ReactNode;
+}) => (
   <a
     href={href}
     target="_blank"

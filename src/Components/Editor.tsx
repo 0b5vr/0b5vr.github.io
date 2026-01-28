@@ -4,8 +4,12 @@ import { type editor, KeyCode, KeyMod } from 'monaco-editor';
 import { useCallback, useEffect, useRef } from 'react';
 import defaultValue from './editorDefaultCode.js?raw';
 
-export const Editor: React.FC = () => {
-  const refEditor = useRef<editor.IStandaloneCodeEditor>();
+declare global {
+  function importShim(url: string): Promise<any>;
+}
+
+export const Editor = () => {
+  const refEditor = useRef<editor.IStandaloneCodeEditor>(null);
   const refDivContainer = useRef<HTMLDivElement>(null);
   const monaco = useMonaco();
 
@@ -25,12 +29,14 @@ export const Editor: React.FC = () => {
 
   useEffect(() => {
     if (monaco) {
+      // TODO: Update to new Monaco Editor API for TypeScript definitions
+      // monaco.languages.typescript is deprecated in v0.52.x
       fetch(
         'https://cdn.jsdelivr.net/npm/@0b5vr/experimental/dist/0b5vr-experimental.d.ts',
       )
         .then((res) => res.text())
         .then(async (typedef) => {
-          monaco.languages.typescript.javascriptDefaults.addExtraLib(
+          monaco.typescript.javascriptDefaults.addExtraLib(
             typedef,
             'file:///node_modules/@types/0b5vr__experimental/index.d.ts',
           );

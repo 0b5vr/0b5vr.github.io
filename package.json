@@ -1,32 +1,39 @@
 {
   "name": "0b5vr.github.io",
+  "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "biome check",
     "lint-fix": "biome check --write",
     "resize-toolbox-images": "node ./bin/resize-toolbox-images.mjs"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@0b5vr/experimental": "^0.9.6",
+    "@0b5vr/experimental": "^0.9.9",
     "@biomejs/biome": "^2.3.13",
+    "@eslint/js": "^9.25.0",
     "@monaco-editor/react": "^4.7.0",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "@vitejs/plugin-react": "^1.0.7",
-    "autoprefixer": "^10.4.2",
-    "es-module-shims": "^1.4.5",
-    "monaco-editor": "0.52.2",
-    "postcss": "^8.4.5",
-    "sharp": "^0.29.3",
-    "tailwindcss": "^3.0.15",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2"
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "es-module-shims": "^2.8.0",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "monaco-editor": "^0.55.1",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.18",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5"
   }
 }

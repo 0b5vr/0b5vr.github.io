@@ -4,8 +4,8 @@ import bgOverlayPng from './assets/bg-overlay.png?url';
 import { BackgroundRenderer } from './BackgroundRenderer';
 import { useAnimationFrame } from './utils/useAnimationFrame';
 
-export function Background(): JSX.Element {
-  const refRenderer = useRef<BackgroundRenderer>();
+export function Background() {
+  const refRenderer = useRef<BackgroundRenderer>(null);
 
   const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
     if (canvas == null) {

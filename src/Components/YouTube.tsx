@@ -2,7 +2,7 @@ interface Props {
   url: string;
 }
 
-export function YouTube({ url }: Props): JSX.Element {
+export function YouTube({ url }: Props) {
   return (
     <iframe
       src={url}
