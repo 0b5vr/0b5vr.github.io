@@ -1,14 +1,21 @@
 import { arraySerial, TRIANGLE_STRIP_QUAD } from '@0b5vr/experimental';
+import { glClear } from './gl/glClear';
+import {
+  GL_BLEND,
+  GL_FRAMEBUFFER,
+  GL_ONE,
+  GL_ONE_MINUS_SRC_ALPHA,
+  GL_SRC_ALPHA,
+  GL_ZERO,
+} from './gl/glConstants';
 import { glCreateVertexbuffer } from './gl/glCreateVertexBuffer';
-import { glVertexArrayBindVertexbuffer } from './gl/glVertexArrayBindVertexbuffer';
+import { glLazyMultisampleTarget } from './gl/glLazyMultisampleTarget';
 import { glLazyProgram } from './gl/glLazyProgram';
+import { glVertexArrayBindVertexbuffer } from './gl/glVertexArrayBindVertexbuffer';
 import linesVert from './shaders/lines.vert?raw';
+import postFrag from './shaders/post.frag?raw';
 import quadVert from './shaders/quad.vert?raw';
 import whiteFrag from './shaders/white.frag?raw';
-import postFrag from './shaders/post.frag?raw';
-import { glLazyMultisampleTarget } from './gl/glLazyMultisampleTarget';
-import { GL_BLEND, GL_FRAMEBUFFER, GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA, GL_ZERO } from './gl/glConstants';
-import { glClear } from './gl/glClear';
 
 const LINE_SEGMENTS = 256;
 const LINE_COUNT = 128;
@@ -39,7 +46,13 @@ export class BackgroundRenderer {
     this._gl = canvas.getContext('webgl2')!;
     this._gl.enable(GL_BLEND);
 
-    this._target = glLazyMultisampleTarget(this._gl, this._canvas.width, this._canvas.height, 4, this._gl.RGBA8);
+    this._target = glLazyMultisampleTarget(
+      this._gl,
+      this._canvas.width,
+      this._canvas.height,
+      4,
+      this._gl.RGBA8,
+    );
 
     this._vaoQuad = this._createVAOQuad();
     this._vaoLines = this._createVAOLines();
@@ -64,7 +77,13 @@ export class BackgroundRenderer {
     this._canvas.width = width;
     this._canvas.height = height;
 
-    this._target = glLazyMultisampleTarget(this._gl, this._canvas.width, this._canvas.height, 4, this._gl.RGBA8);
+    this._target = glLazyMultisampleTarget(
+      this._gl,
+      this._canvas.width,
+      this._canvas.height,
+      4,
+      this._gl.RGBA8,
+    );
   }
 
   private _createVAOLines(): WebGLVertexArrayObject {
@@ -72,12 +91,20 @@ export class BackgroundRenderer {
 
     const vao = gl.createVertexArray()!;
 
-    const bufferInstanceSegments = glCreateVertexbuffer(gl, new Float32Array(
-      arraySerial(LINE_SEGMENTS).map((v) => (v / (LINE_SEGMENTS - 1) * 2.0 - 1.0))
-    ));
-    const bufferInstanceCount = glCreateVertexbuffer(gl, new Float32Array(
-      arraySerial(LINE_COUNT).map((v) => (v / (LINE_COUNT - 1) * 2.0 - 1.0))
-    ));
+    const bufferInstanceSegments = glCreateVertexbuffer(
+      gl,
+      new Float32Array(
+        arraySerial(LINE_SEGMENTS).map(
+          (v) => (v / (LINE_SEGMENTS - 1)) * 2.0 - 1.0,
+        ),
+      ),
+    );
+    const bufferInstanceCount = glCreateVertexbuffer(
+      gl,
+      new Float32Array(
+        arraySerial(LINE_COUNT).map((v) => (v / (LINE_COUNT - 1)) * 2.0 - 1.0),
+      ),
+    );
 
     glVertexArrayBindVertexbuffer(gl, vao, bufferInstanceSegments, 0, 1);
     glVertexArrayBindVertexbuffer(gl, vao, bufferInstanceCount, 1, 1, 1);
@@ -109,7 +136,9 @@ export class BackgroundRenderer {
   private _renderLines(): void {
     const gl = this._gl;
 
-    if (this._programLines == null) { return; }
+    if (this._programLines == null) {
+      return;
+    }
 
     gl.bindFramebuffer(GL_FRAMEBUFFER, this._target.framebuffer);
     gl.viewport(0, 0, this._canvas.width, this._canvas.height);
@@ -126,7 +155,7 @@ export class BackgroundRenderer {
     gl.uniform1f(
       gl.getUniformLocation(this._programLines, 'uScrollPos'),
       this.scrollPos,
-    )
+    );
     gl.uniform2f(
       gl.getUniformLocation(this._programLines, 'uResolution'),
       this._canvas.width,
@@ -139,7 +168,9 @@ export class BackgroundRenderer {
   private _renderPost(): void {
     const gl = this._gl;
 
-    if (this._programPost == null) { return; }
+    if (this._programPost == null) {
+      return;
+    }
 
     gl.bindFramebuffer(GL_FRAMEBUFFER, null);
     gl.viewport(0, 0, this._canvas.width, this._canvas.height);
@@ -148,10 +179,7 @@ export class BackgroundRenderer {
     gl.blendFunc(GL_ONE, GL_ZERO);
     gl.bindVertexArray(this._vaoQuad);
 
-    gl.uniform1f(
-      gl.getUniformLocation(this._programPost, 'uTime'),
-      this._time,
-    );
+    gl.uniform1f(gl.getUniformLocation(this._programPost, 'uTime'), this._time);
     gl.uniform2f(
       gl.getUniformLocation(this._programPost, 'uResolution'),
       this._canvas.width,

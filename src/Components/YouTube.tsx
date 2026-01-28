@@ -12,4 +12,4 @@ export function YouTube({ url }: Props): JSX.Element {
       className="w-full aspect-video"
     />
   );
-};
+}

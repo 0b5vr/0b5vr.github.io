@@ -10,12 +10,12 @@ export function glVertexArrayBindVertexbuffer(
   stride = 0,
   offset = 0,
 ): void {
-  gl.bindVertexArray( vertexArray );
+  gl.bindVertexArray(vertexArray);
 
-  gl.bindBuffer( GL_ARRAY_BUFFER, buffer );
-  gl.enableVertexAttribArray( location );
-  gl.vertexAttribPointer( location, size, GL_FLOAT, false, stride, offset );
-  gl.vertexAttribDivisor( location, divisor );
+  gl.bindBuffer(GL_ARRAY_BUFFER, buffer);
+  gl.enableVertexAttribArray(location);
+  gl.vertexAttribPointer(location, size, GL_FLOAT, false, stride, offset);
+  gl.vertexAttribDivisor(location, divisor);
 
-  gl.bindVertexArray( null );
+  gl.bindVertexArray(null);
 }

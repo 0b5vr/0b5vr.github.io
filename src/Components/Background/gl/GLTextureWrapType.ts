@@ -1,4 +1,8 @@
-import { GL_CLAMP_TO_EDGE, GL_MIRRORED_REPEAT, GL_REPEAT } from './glConstants';
+import type {
+  GL_CLAMP_TO_EDGE,
+  GL_MIRRORED_REPEAT,
+  GL_REPEAT,
+} from './glConstants';
 
 export type GLTextureWrapType =
   | typeof GL_REPEAT
