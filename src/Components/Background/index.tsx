@@ -1,6 +1,6 @@
 import { CDS } from '@0b5vr/experimental';
 import { useSetAtom } from 'jotai';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { atomBackgroundFps } from './atoms/atomBackgroundFps';
 import { atomBackgroundResolution } from './atoms/atomBackgroundResolution';
 import { BackgroundRenderer } from './BackgroundRenderer';
@@ -8,12 +8,20 @@ import { FpsCounter } from './FpsCounter';
 import { useAnimationFrame } from './utils/useAnimationFrame';
 import { BackgroundStats } from './BackgroundStats';
 import { BackgroundOverlay } from './BackgroundOverlay';
+import { useResize } from './utils/useResize';
 
 export function Background() {
   const refRenderer = useRef<BackgroundRenderer>(null);
   const refFpsCounter = useRef(new FpsCounter());
-  const setFps = useSetAtom(atomBackgroundFps);
-  const setResolution = useSetAtom(atomBackgroundResolution);
+  const setFpsText = useSetAtom(atomBackgroundFps);
+  const setResolutionText = useSetAtom(atomBackgroundResolution);
+
+  const setSize = useCallback(() => {
+    const width = Math.floor(innerWidth * devicePixelRatio / 4) * 2;
+    const height = Math.floor(innerHeight * devicePixelRatio / 4) * 2;
+    refRenderer.current?.resize(width, height);
+    setResolutionText(`${width} x ${height}`);
+  }, [setResolutionText]);
 
   const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
     if (canvas == null) {
@@ -23,26 +31,13 @@ export function Background() {
     refRenderer.current = new BackgroundRenderer(canvas);
     refRenderer.current.onAfterRender = (delta) => {
       refFpsCounter.current.update(delta);
-      setFps(refFpsCounter.current.fps);
+      setFpsText(refFpsCounter.current.fps);
     };
 
-    const width = Math.floor(innerWidth * devicePixelRatio / 4) * 2;
-    const height = Math.floor(innerHeight * devicePixelRatio / 4) * 2;
-    refRenderer.current.resize(width, height);
-    setResolution(`${width} x ${height}`);
-  }, [setFps, setResolution]);
+    setSize();
+  }, [setFpsText, setSize]);
 
-  useEffect(() => {
-    const onResize = (): void => {
-      const width = Math.floor(innerWidth * devicePixelRatio / 4) * 2;
-      const height = Math.floor(innerHeight * devicePixelRatio / 4) * 2;
-      refRenderer.current?.resize(width, height);
-      setResolution(`${width} x ${height}`);
-    };
-
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [setResolution]);
+  useResize(setSize);
 
   const refCDSScrollPos = useRef(new CDS());
 
