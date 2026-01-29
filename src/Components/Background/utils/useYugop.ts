@@ -1,5 +1,5 @@
-import { linearstep, getYugopText } from '@0b5vr/experimental';
-import { useState, useEffect } from 'react';
+import { getYugopText, linearstep } from '@0b5vr/experimental';
+import { useEffect, useState } from 'react';
 
 export function useYugop(text: string, delay: number): string {
   const [timestampBegin] = useState(() => performance.now() + delay * 1000);

@@ -2,10 +2,12 @@ import { useCallback, useMemo, useState } from 'react';
 import { useResize } from './utils/useResize';
 
 // == constants ====================================================================================
-const charTable = '000001110155000avavau5ekfh842h61m9m110006111634443le4el44v440001100v0000001g8421vhlhv32222vgv1vvgvgvhhvggv1vgvv1vhvvggggvhvhvvhvgv0101001011421240v0v012421vhs0400000vhvhhf9vhvv111vfhhhfv1v1vv1f11v1thvhhvhh11111ggghvh979h1111vvllllvhhhhvhhhvvhv11vhhpvvhv9hv1vgvv4444hhhhvhhha4llllvha4ahhhvgvv842v711171248g744474ah000000v12000vhvhhf9vhvv111vfhhhfv1v1vv1f11v1thvhhvhh11111ggghvh979h1111vvllllvhhhhvhhhvvhv11vhhpvvhv9hv1vgvv4444hhhhvhhha4llllvha4ahhhvgvv842v62326111113262302l80';
+const charTable =
+  '000001110155000avavau5ekfh842h61m9m110006111634443le4el44v440001100v0000001g8421vhlhv32222vgv1vvgvgvhhvggv1vgvv1vhvvggggvhvhvvhvgv0101001011421240v0v012421vhs0400000vhvhhf9vhvv111vfhhhfv1v1vv1f11v1thvhhvhh11111ggghvh979h1111vvllllvhhhhvhhhvvhv11vhhpvvhv9hv1vgvv4444hhhhvhhha4llllvha4ahhhvgvv842v711171248g744474ah000000v12000vhvhhf9vhvv111vfhhhfv1v1vv1f11v1thvhhvhh11111ggghvh979h1111vvllllvhhhhvhhhvvhv11vhhpvvhv9hv1vgvv4444hhhhvhhha4llllvha4ahhhvgvv842v62326111113262302l80';
 //                 SP   !    "    #    $    %    &    '    (    )    *    +    ,    -    .    /    0    1    2    3    4    5    6    7    8    9    :    ;    <    =    >    ?    @    A    B    C    D    E    F    G    H    I    J    K    L    M    N    O    P    Q    R    S    T    U    V    W    X    Y    Z    [    \    ]    ^    _    `    a    b    c    d    e    f    g    h    i    j    k    l    m    n    o    p    q    r    s    t    u    v    w    x    y    z    {    |    }    ~
 
-const charWidthTable = '21355551335515155255555555113535555555555155555555555555555353552555555551555555555555555553135';
+const charWidthTable =
+  '21355551335515155255555555113535555555555155555555555555555353552555555551555555555555555553135';
 //                       !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 
 // == functions ====================================================================================
@@ -75,7 +77,13 @@ function drawText(canvas: HTMLCanvasElement, text: string): void {
 }
 
 // == component ====================================================================================
-export function PixelLabel({ text, className }: { text: string; className?: string }) {
+export function PixelLabel({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) {
   const totalWidth = useMemo(() => calcTotalWidth(text), [text]);
 
   const [ratio, setRatio] = useState(devicePixelRatio);
@@ -83,13 +91,16 @@ export function PixelLabel({ text, className }: { text: string; className?: stri
     setRatio(Math.max(1.0, Math.floor(devicePixelRatio)) / devicePixelRatio);
   });
 
-  const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
-    if (canvas == null) {
-      return;
-    }
+  const refCanvas = useCallback(
+    (canvas: HTMLCanvasElement | null) => {
+      if (canvas == null) {
+        return;
+      }
 
-    drawText(canvas, text);
-  }, [text]);
+      drawText(canvas, text);
+    },
+    [text],
+  );
 
   return (
     <canvas

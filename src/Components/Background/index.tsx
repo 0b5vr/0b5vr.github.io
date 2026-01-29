@@ -3,11 +3,11 @@ import { useSetAtom } from 'jotai';
 import { useCallback, useRef } from 'react';
 import { atomBackgroundFps } from './atoms/atomBackgroundFps';
 import { atomBackgroundResolution } from './atoms/atomBackgroundResolution';
+import { BackgroundOverlay } from './BackgroundOverlay';
 import { BackgroundRenderer } from './BackgroundRenderer';
+import { BackgroundStats } from './BackgroundStats';
 import { FpsCounter } from './FpsCounter';
 import { useAnimationFrame } from './utils/useAnimationFrame';
-import { BackgroundStats } from './BackgroundStats';
-import { BackgroundOverlay } from './BackgroundOverlay';
 import { useResize } from './utils/useResize';
 
 export function Background() {
@@ -17,25 +17,28 @@ export function Background() {
   const setResolutionText = useSetAtom(atomBackgroundResolution);
 
   const setSize = useCallback(() => {
-    const width = Math.floor(innerWidth * devicePixelRatio / 4) * 2;
-    const height = Math.floor(innerHeight * devicePixelRatio / 4) * 2;
+    const width = Math.floor((innerWidth * devicePixelRatio) / 4) * 2;
+    const height = Math.floor((innerHeight * devicePixelRatio) / 4) * 2;
     refRenderer.current?.resize(width, height);
     setResolutionText(`${width} x ${height}`);
   }, [setResolutionText]);
 
-  const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
-    if (canvas == null) {
-      return;
-    }
+  const refCanvas = useCallback(
+    (canvas: HTMLCanvasElement | null) => {
+      if (canvas == null) {
+        return;
+      }
 
-    refRenderer.current = new BackgroundRenderer(canvas);
-    refRenderer.current.onAfterRender = (delta) => {
-      refFpsCounter.current.update(delta);
-      setFpsText(refFpsCounter.current.fps);
-    };
+      refRenderer.current = new BackgroundRenderer(canvas);
+      refRenderer.current.onAfterRender = (delta) => {
+        refFpsCounter.current.update(delta);
+        setFpsText(refFpsCounter.current.fps);
+      };
 
-    setSize();
-  }, [setFpsText, setSize]);
+      setSize();
+    },
+    [setFpsText, setSize],
+  );
 
   useResize(setSize);
 
