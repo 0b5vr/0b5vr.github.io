@@ -1,13 +1,13 @@
 import { CDS } from '@0b5vr/experimental';
 import { useSetAtom } from 'jotai';
 import { useCallback, useEffect, useRef } from 'react';
-import bgOverlayPng from './assets/bg-overlay.png?url';
 import { atomBackgroundFps } from './atoms/atomBackgroundFps';
 import { atomBackgroundResolution } from './atoms/atomBackgroundResolution';
 import { BackgroundRenderer } from './BackgroundRenderer';
 import { FpsCounter } from './FpsCounter';
 import { useAnimationFrame } from './utils/useAnimationFrame';
 import { BackgroundStats } from './BackgroundStats';
+import { BackgroundOverlay } from './BackgroundOverlay';
 
 export function Background() {
   const refRenderer = useRef<BackgroundRenderer>(null);
@@ -69,12 +69,7 @@ export function Background() {
         className="fixed top-0 left-0 w-full h-full"
         ref={refCanvas}
       ></canvas>
-      <div
-        className="fixed top-0 left-0 w-full h-full bg-repeat"
-        style={{
-          backgroundImage: `url(${bgOverlayPng})`,
-        }}
-      ></div>
+      <BackgroundOverlay />
       <BackgroundStats />
     </>
   );
