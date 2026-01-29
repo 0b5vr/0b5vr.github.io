@@ -17,7 +17,14 @@ export function BackgroundStats() {
   const resolution = useAtomValue(atomBackgroundResolution);
 
   return (
-    <div className="fixed bottom-2 right-2 flex flex-col items-end gap-0.5">
+    <div
+      className="fixed flex flex-col items-end"
+      style={{
+        bottom: `${4 / devicePixelRatio}px`,
+        right: `${4 / devicePixelRatio}px`,
+        gap: `${2 / devicePixelRatio}px`
+      }}
+    >
       <Line text="0b5vr.com" delay={0.7} />
       <Line text={`${fps} fps`} delay={0.5} />
       <Line text={`resolution: ${resolution}`} delay={0.3} />
