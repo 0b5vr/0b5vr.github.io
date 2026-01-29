@@ -3,6 +3,7 @@ import { useSetAtom } from 'jotai';
 import { useCallback, useEffect, useRef } from 'react';
 import bgOverlayPng from './assets/bg-overlay.png?url';
 import { atomBackgroundFps } from './atoms/atomBackgroundFps';
+import { atomBackgroundResolution } from './atoms/atomBackgroundResolution';
 import { BackgroundRenderer } from './BackgroundRenderer';
 import { FpsCounter } from './FpsCounter';
 import { useAnimationFrame } from './utils/useAnimationFrame';
@@ -12,6 +13,7 @@ export function Background() {
   const refRenderer = useRef<BackgroundRenderer>(null);
   const refFpsCounter = useRef(new FpsCounter());
   const setFps = useSetAtom(atomBackgroundFps);
+  const setResolution = useSetAtom(atomBackgroundResolution);
 
   const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
     if (canvas == null) {
@@ -27,18 +29,20 @@ export function Background() {
     const width = Math.floor(window.innerWidth / 4) * 2;
     const height = Math.floor(window.innerHeight / 4) * 2;
     refRenderer.current.resize(width, height);
-  }, [setFps]);
+    setResolution(`${width} x ${height}`);
+  }, [setFps, setResolution]);
 
   useEffect(() => {
     const onResize = (): void => {
       const width = Math.floor(window.innerWidth / 4) * 2;
       const height = Math.floor(window.innerHeight / 4) * 2;
       refRenderer.current?.resize(width, height);
+      setResolution(`${width} x ${height}`);
     };
 
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, []);
+  }, [setResolution]);
 
   const refCDSScrollPos = useRef(new CDS());
 
