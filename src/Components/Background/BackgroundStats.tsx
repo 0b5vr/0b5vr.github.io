@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { atomBackgroundFps } from './atoms/atomBackgroundFps';
 import { atomBackgroundResolution } from './atoms/atomBackgroundResolution';
 import { PixelLabel } from './PixelLabel';
@@ -16,10 +16,13 @@ export function BackgroundStats() {
   const fps = useAtomValue(atomBackgroundFps);
   const resolution = useAtomValue(atomBackgroundResolution);
 
-  const [ratio, setRatio] = useState(devicePixelRatio);
+  const [dpr, setDpr] = useState(devicePixelRatio);
   useResize(() => {
-    setRatio(Math.max(1.0, Math.floor(devicePixelRatio)) / devicePixelRatio);
+    setDpr(devicePixelRatio);
   });
+  const ratio = useMemo(() => (
+    Math.max(1.0, Math.floor(dpr)) / dpr
+  ), [dpr]);
 
   return (
     <div
