@@ -18,18 +18,18 @@ export function BackgroundStats() {
   const fps = useAtomValue(atomBackgroundFps);
   const resolution = useAtomValue(atomBackgroundResolution);
 
-  const [dpr, setDpr] = useState(devicePixelRatio);
+  const [ratio, setRatio] = useState(devicePixelRatio);
   useResize(() => {
-    setDpr(devicePixelRatio);
+    setRatio(Math.max(1.0, Math.floor(devicePixelRatio)) / devicePixelRatio);
   });
 
   return (
     <div
       className="fixed flex flex-col items-end"
       style={{
-        bottom: `${4 / dpr}px`,
-        right: `${4 / dpr}px`,
-        gap: `${2 / dpr}px`
+        bottom: `${ratio * 4}px`,
+        right: `${ratio * 4}px`,
+        gap: `${ratio * 2}px`
       }}
     >
       <Line text="0b5vr.com" delay={0.7} />

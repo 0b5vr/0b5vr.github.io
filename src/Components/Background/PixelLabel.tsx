@@ -1,4 +1,5 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import { useResize } from './utils/useResize';
 
 // == constants ====================================================================================
 const charTable = '000001110155000avavau5ekfh842h61m9m110006111634443le4el44v440001100v0000001g8421vhlhv32222vgv1vvgvgvhhvggv1vgvv1vhvvggggvhvhvvhvgv0101001011421240v0v012421vhs0400000vhvhhf9vhvv111vfhhhfv1v1vv1f11v1thvhhvhh11111ggghvh979h1111vvllllvhhhhvhhhvvhv11vhhpvvhv9hv1vgvv4444hhhhvhhha4llllvha4ahhhvgvv842v711171248g744474ah000000v12000vhvhhf9vhvv111vfhhhfv1v1vv1f11v1thvhhvhh11111ggghvh979h1111vvllllvhhhhvhhhvvhv11vhhpvvhv9hv1vgvv4444hhhhvhhha4llllvha4ahhhvgvv842v62326111113262302l80';
@@ -77,6 +78,11 @@ function drawText(canvas: HTMLCanvasElement, text: string): void {
 export function PixelLabel({ text, className }: { text: string; className?: string }) {
   const totalWidth = useMemo(() => calcTotalWidth(text), [text]);
 
+  const [ratio, setRatio] = useState(devicePixelRatio);
+  useResize(() => {
+    setRatio(Math.max(1.0, Math.floor(devicePixelRatio)) / devicePixelRatio);
+  });
+
   const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
     if (canvas == null) {
       return;
@@ -90,7 +96,7 @@ export function PixelLabel({ text, className }: { text: string; className?: stri
       ref={refCanvas}
       className={className}
       style={{
-        width: `${totalWidth / window.devicePixelRatio}px`,
+        width: `${ratio * totalWidth}px`,
         imageRendering: 'pixelated',
       }}
     />
