@@ -1,11 +1,17 @@
 import { CDS } from '@0b5vr/experimental';
+import { useSetAtom } from 'jotai';
 import { useCallback, useEffect, useRef } from 'react';
 import bgOverlayPng from './assets/bg-overlay.png?url';
+import { atomBackgroundFps } from './atoms/atomBackgroundFps';
 import { BackgroundRenderer } from './BackgroundRenderer';
+import { FpsCounter } from './FpsCounter';
 import { useAnimationFrame } from './utils/useAnimationFrame';
+import { BackgroundStats } from './BackgroundStats';
 
 export function Background() {
   const refRenderer = useRef<BackgroundRenderer>(null);
+  const refFpsCounter = useRef(new FpsCounter());
+  const setFps = useSetAtom(atomBackgroundFps);
 
   const refCanvas = useCallback((canvas: HTMLCanvasElement | null) => {
     if (canvas == null) {
@@ -13,11 +19,15 @@ export function Background() {
     }
 
     refRenderer.current = new BackgroundRenderer(canvas);
+    refRenderer.current.onAfterRender = (delta) => {
+      refFpsCounter.current.update(delta);
+      setFps(refFpsCounter.current.fps);
+    };
 
     const width = Math.floor(window.innerWidth / 4) * 2;
     const height = Math.floor(window.innerHeight / 4) * 2;
     refRenderer.current.resize(width, height);
-  }, []);
+  }, [setFps]);
 
   useEffect(() => {
     const onResize = (): void => {
@@ -61,6 +71,7 @@ export function Background() {
           backgroundImage: `url(${bgOverlayPng})`,
         }}
       ></div>
+      <BackgroundStats />
     </>
   );
 }

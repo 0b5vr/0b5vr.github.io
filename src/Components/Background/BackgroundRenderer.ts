@@ -22,6 +22,7 @@ const LINE_COUNT = 128;
 
 export class BackgroundRenderer {
   public scrollPos: number;
+  public onAfterRender?: (delta: number) => void;
 
   private _time;
 
@@ -71,6 +72,8 @@ export class BackgroundRenderer {
     this._renderLines();
     this._target.copy();
     this._renderPost();
+
+    this.onAfterRender?.(delta);
   }
 
   public resize(width: number, height: number): void {
