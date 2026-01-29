@@ -26,16 +26,16 @@ export function Background() {
       setFps(refFpsCounter.current.fps);
     };
 
-    const width = Math.floor(window.innerWidth / 4) * 2;
-    const height = Math.floor(window.innerHeight / 4) * 2;
+    const width = Math.floor(innerWidth * devicePixelRatio / 4) * 2;
+    const height = Math.floor(innerHeight * devicePixelRatio / 4) * 2;
     refRenderer.current.resize(width, height);
     setResolution(`${width} x ${height}`);
   }, [setFps, setResolution]);
 
   useEffect(() => {
     const onResize = (): void => {
-      const width = Math.floor(window.innerWidth / 4) * 2;
-      const height = Math.floor(window.innerHeight / 4) * 2;
+      const width = Math.floor(innerWidth * devicePixelRatio / 4) * 2;
+      const height = Math.floor(innerHeight * devicePixelRatio / 4) * 2;
       refRenderer.current?.resize(width, height);
       setResolution(`${width} x ${height}`);
     };
