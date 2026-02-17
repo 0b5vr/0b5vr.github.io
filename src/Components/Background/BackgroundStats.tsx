@@ -20,7 +20,7 @@ export function BackgroundStats() {
   useResize(() => {
     setDpr(devicePixelRatio);
   });
-  const ratio = useMemo(() => Math.max(1.0, Math.floor(dpr)) / dpr, [dpr]);
+  const ratio = useMemo(() => Math.max(1.0, Math.round(dpr)) / dpr, [dpr]);
 
   return (
     <div
