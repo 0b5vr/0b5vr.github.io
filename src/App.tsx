@@ -82,6 +82,9 @@ export const App: React.FC = () => {
               <Link href="https://twitter.com/0b5vr">Twitter</Link>
             </li>
             <li>
+              <Link href="https://bsky.app/profile/0b5vr.bsky.social">Bluesky</Link>
+            </li>
+            <li>
               <Link href="https://www.pouet.net/user.php?who=104878">
                 pouët
               </Link>
