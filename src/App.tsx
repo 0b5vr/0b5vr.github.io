@@ -95,6 +95,9 @@ export const App: React.FC = () => {
             <li>
               <Link href="https://scrapbox.io/0b5vr/">Scrapbox</Link>
             </li>
+            <li>
+              <Link href="https://0b5vr.bandcamp.com/">Bandcamp</Link>
+            </li>
           </ul>
 
           <h2>Contact</h2>
