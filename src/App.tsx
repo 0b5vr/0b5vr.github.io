@@ -19,7 +19,7 @@ export const App: React.FC = () => {
       {fancy && <Background />}
 
       <div className="relative grid place-items-center">
-        <article className="my-4 p-2 w-full max-w-sm md:max-w-2xl">
+        <article className="my-4 p-2 w-full max-w-sm md:max-w-2xl xl:max-w-6xl">
           <h1 className="w-full">0b5vr.com</h1>
 
           <Paragraph>
