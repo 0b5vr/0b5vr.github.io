@@ -66,6 +66,7 @@ export const App: React.FC = () => {
             width="135"
             height="210"
             scrolling="no"
+            loading="lazy"
             src="https://weepjp.neocities.org/harbot/"
           ></iframe>
 
