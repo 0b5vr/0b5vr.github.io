@@ -26,8 +26,8 @@ export function BackgroundStats() {
     <div
       className="fixed flex flex-col items-end"
       style={{
-        bottom: `${ratio * 4}px`,
-        right: `${ratio * 4}px`,
+        bottom: `calc(${ratio * 4}px + env(safe-area-inset-bottom, 0px))`,
+        right: `calc(${ratio * 4}px + env(safe-area-inset-right, 0px))`,
         gap: `${ratio * 2}px`,
       }}
     >
