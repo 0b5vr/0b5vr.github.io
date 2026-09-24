@@ -46,10 +46,10 @@ export const App: React.FC = () => {
 
           <Paragraph>
             <span className="grid gap-2 grid-cols-1 md:grid-cols-2">
-              <YouTube url="https://www.youtube.com/embed/OewtzMN0qO0" />
-              <YouTube url="https://www.youtube.com/embed/3lOptjAeA2w" />
-              <YouTube url="https://www.youtube.com/embed/Ay2ht_dgVw8" />
-              <YouTube url="https://www.youtube.com/embed/D2COWeeEqTs" />
+              <YouTube id="OewtzMN0qO0" />
+              <YouTube id="3lOptjAeA2w" />
+              <YouTube id="Ay2ht_dgVw8" />
+              <YouTube id="D2COWeeEqTs" />
             </span>
           </Paragraph>
 
