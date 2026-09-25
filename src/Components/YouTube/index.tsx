@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import youtubeSvg from './assets/youtube.svg';
+import { YouTubeThumbnail } from './YouTubeThumbnail';
 
 interface Props {
   /** The video id, e.g. `dQw4w9WgXcQ` */
@@ -27,15 +28,15 @@ function YTFacade({ id, title, onClick }: Props & { onClick: () => void }) {
       aria-label={`Play: ${title}`}
       className="relative w-full aspect-video cursor-pointer bg-black group"
     >
-      <img
-        src={`https://i.ytimg.com/vi/${id}/sddefault.jpg`}
-        alt={`Thumbnail for ${title}`}
-        width={480}
-        height={360}
-        className="w-full h-full object-cover"
-      />
+      <YouTubeThumbnail id={id} title={title} />
       <span className="absolute inset-0 grid place-items-center">
-        <img src={youtubeSvg} alt="YouTube logo" width="72" height="48" className="opacity-80 group-hover:opacity-100" />
+        <img
+          src={youtubeSvg}
+          alt="YouTube logo"
+          width="72"
+          height="48"
+          className="opacity-80 group-hover:opacity-100"
+        />
       </span>
     </button>
   );
